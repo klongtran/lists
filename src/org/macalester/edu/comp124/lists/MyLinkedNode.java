@@ -1,26 +1,27 @@
 package org.macalester.edu.comp124.lists;
 
-public class MyLinkedNode<E> {
-	private MyLinkedNode<E> next;
-	private MyLinkedNode<E> prev;
-	private E value;
-	
-	public MyLinkedNode(E data) {
-		this.value = data;
+/**
+ * Created by baylor on 4/3/14.
+ */
+public class MyLinkedNode<E>
+{
+	E value;
+	MyLinkedNode<E> next;
+
+	MyLinkedNode(E value)
+	{
+		this.value = value;
 	}
-	public MyLinkedNode<E> getNext() {
-		return next;
-	}
-	public void setNext(MyLinkedNode<E> next) {
-		this.next = next;
-	}
-	public MyLinkedNode<E> getPrev() {
-		return prev;
-	}
-	public void setPrev(MyLinkedNode<E> prev) {
-		this.prev = prev;
-	}
-	public E getValue() {
-		return value;
+
+    public E getValue() { return value; }
+
+    public MyLinkedNode<E> getNext() { return next; }
+
+    public void setNext(MyLinkedNode<E> next) { this.next = next; }
+
+	@Override
+	public String toString()
+	{
+		return value.toString();
 	}
 }

@@ -1,34 +1,35 @@
 package org.macalester.edu.comp124.lists;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 /**
  * Created by baylor on 4/3/14.
  */
 public class MyLinkedList<E>
 {
-	private MyLinkedNode<E> head;
-	private MyLinkedNode<E> tail;
-	private int numElements = 0;
+	protected MyLinkedNode<E> head;
+	protected MyLinkedNode<E> tail;
+	public int numElements = 0;
 
 	/**
 	 * Returns the element at position index.
 	 * @param index
 	 * @return
 	 */
-	public E get(int index)
+    public E get(int index)
 	{
-        if (index >= numElements || index < 0) {
-            return null;
+        if (index >= 0 && index < numElements) {
+            int pos = 0;
+            for (MyLinkedNode<E> current = head;
+                 current != null;
+                 current = current.getNext(), pos+=1 )
+            {
+                if (pos == index) {
+                    return current.getValue();
+                }
+            }
         }
 
-        MyLinkedNode<E> current = head;
-
-        for (int i = 0; i < index; i++) {
-            current = current.getNext();
-        }
-
-        return current.getValue();
+        // must not have been a legal position
+        return null;
 	}
 
 	/**
@@ -38,7 +39,7 @@ public class MyLinkedList<E>
 	 */
 	public void add(E elem)
 	{
-        MyLinkedNode<E> newNode = new MyLinkedNode<E>(elem);
+        MyLinkedNode<E> newNode = new MyLinkedNode(elem);
 
         if (head == null) {
             head = newNode;
@@ -58,6 +59,7 @@ public class MyLinkedList<E>
 	 *
 	 * @param elem
 	 */
+
 	public void add(int i, E elem) {
 
 		MyLinkedNode<E> current = head;
@@ -95,6 +97,7 @@ public class MyLinkedList<E>
 	public int size() {
 		return numElements;
 	}
+
 
 	/**
 	 * Clears the contents of the list.
